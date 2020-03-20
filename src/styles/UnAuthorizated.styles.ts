@@ -19,6 +19,7 @@ export const formlayer = style({
   width: "424px",
   margin: "0 auto",
   minHeight: "80vh",
+  height:"81.5vh",
   borderRadius: "2px"
 });
 
