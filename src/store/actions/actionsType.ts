@@ -1,0 +1,1 @@
+export const ADD_STR = "ADD_STR";

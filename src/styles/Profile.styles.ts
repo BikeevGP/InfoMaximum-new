@@ -103,5 +103,6 @@ export const divLabels = style({
 });
 
 export const divInputs = style({
-  display: "inline-block"
+  display: "inline-block",
+  minWidth: "435px"
 });

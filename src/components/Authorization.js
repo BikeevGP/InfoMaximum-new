@@ -1,17 +1,19 @@
 import React from "react";
 import MyButton from "./button";
-import { button, inputs, linkClass } from "../styles/UnAuthorizated.styles";
+import { button, linkClass } from "../styles/UnAuthorizated.styles";
 import Warning from "./ErrorLayer";
 import { NavLink } from "react-router-dom";
+import { reduxForm } from 'redux-form';
+import MyInput from './MyInputs';
 
-interface IAuthProps {}
 
-const AuthorizationBody: React.FC<IAuthProps> = props => {
+
+let AuthorizationBody = (props) => {
   return (
     <>
       <form action="#">
-        <input type="text" className={inputs} placeholder="Электронная почта" />
-        <input type="password" className={inputs} placeholder="Пароль" />
+        <MyInput name="email" type="text" placeholder="Электронная почта" />
+        <MyInput name="password" type="password" placeholder="Пароль" />
         <MyButton value="Войти в систему" className={button} />
       </form>
       <NavLink to="/registration" className={linkClass}>
@@ -21,5 +23,7 @@ const AuthorizationBody: React.FC<IAuthProps> = props => {
     </>
   );
 };
+AuthorizationBody =reduxForm({form:"Auth"})(AuthorizationBody)
+
 
 export default AuthorizationBody;

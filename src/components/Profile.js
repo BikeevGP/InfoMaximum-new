@@ -7,13 +7,13 @@ import {
   divInputs,
   divLabels,
   userLayerLabels,
-  userLayerInputs
 } from "../styles/Profile.styles";
-import MyButton from "../components/button";
+import MyButton from "./button";
+import { reduxForm } from 'redux-form';
+import MyInput from './MyInputs';
 
-interface IProfileProps {}
 
-const Profile: React.FC<IProfileProps> = props => {
+let Profile = props => {
   return (
     <>
       <div className={middleLine}>
@@ -40,24 +40,16 @@ const Profile: React.FC<IProfileProps> = props => {
             </label>
           </div>
           <div className={divInputs}>
-            <input id="name" type="text" className={userLayerInputs} />
-            <input id="secondName" type="text" className={userLayerInputs} />
-            <input id="email" type="text" className={userLayerInputs} />
-            <input
-              id="newPassword"
-              type="password"
-              className={userLayerInputs}
-            />
-            <input
-              id="reEnterPassword"
-              type="password"
-              className={userLayerInputs}
-            />
+            <MyInput id="name" name="name" type="text"/>
+            <MyInput id="secondName" name="secondName" type="text"/>
+            <MyInput id="email" name="email" type="text"/>
+            <MyInput id="newPassword" name="newPassword" type="password"/>
+            <MyInput id="reEnterPassword" name="reEnterPassword" type="password"/>
           </div>
         </form>
       </div>
     </>
   );
 };
-
+Profile = reduxForm({form: "Profile"})(Profile);
 export default Profile;
