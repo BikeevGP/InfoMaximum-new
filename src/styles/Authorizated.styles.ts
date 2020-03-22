@@ -17,11 +17,14 @@ export const navLayer = style({
 export const navIcon = style({
   position: "absolute",
   left: "24px",
-  top: "18px"
+  top: "18px",
+  zIndex: 5,
+  cursor: "pointer"
 });
 
 export const navTagP = style({
   position: "absolute",
+  zIndex:1,
   left: "60px",
   top: "20px",
   margin: "0",
@@ -37,3 +40,5 @@ export const workPlace = style({
   marginTop: "24px",
   marginLeft: "22px"
 });
+
+

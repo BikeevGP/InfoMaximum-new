@@ -66,7 +66,8 @@ export const userLayer = style({
   paddingLeft: "46px",
   paddingTop: "24px",
   paddingBottom: "36px",
-  minWidth: "785px"
+  minWidth: "785px",
+  zIndex: 1
 });
 export const userLayerLabels = style({
   fontFamily: "Open Sans",
