@@ -7,19 +7,20 @@ import {
 } from "../styles/UnAuthorizated.styles";
 import MyButton from "./button";
 import { NavLink } from "react-router-dom";
-import { reduxForm } from 'redux-form';
+import { reduxForm, Field } from 'redux-form';
 import MyInput from './MyInputs';
+import {maxLength, minLength, emailTest, checkRePassword, minLength8} from '../store/validation';
 
 let Registration = () => {
   return (
     <>
       <h2 className={registrationTagH2}>Регистрация</h2>
       <form action="#">
-        <MyInput name="name" type="text" placeholder="Имя"/>
-        <MyInput name="sname" type="text" placeholder="Фамилия"/>
-        <MyInput name="email" type="text" placeholder="Электронная почта"/>
-        <MyInput name="password" type="password" placeholder="Введите пароль"/>
-        <MyInput name="RePassword" type="password" placeholder="Повторите пароль"/>
+        <Field name="name" type="text" placeholder="Имя" component={MyInput} validate={[maxLength, minLength]}/>
+        <Field name="sname" type="text" placeholder="Фамилия" component={MyInput} validate={[maxLength, minLength]}/>
+        <Field name="email" type="text" placeholder="Электронная почта" component={MyInput} validate={[emailTest]}/>
+        <Field name="password" type="password" placeholder="Введите пароль" component={MyInput} validate={[maxLength, minLength8]}/>
+        <Field name="rePassword" type="password" placeholder="Повторите пароль" component={MyInput} validate={[checkRePassword]}/>
         <MyButton value="Применить и войти" className={button} />
       </form>
       <p className={registrationTagP}>

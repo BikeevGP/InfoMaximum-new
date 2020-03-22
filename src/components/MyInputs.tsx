@@ -1,15 +1,23 @@
 import React from 'react';
-import { Field } from "redux-form";
-import {inputs} from '../styles/UnAuthorizated.styles';
+import {inputs, validationSpan} from '../styles/UnAuthorizated.styles';
 
 interface IFieldProps {
   name: string;
   placeholder: string;
   type: string;
-  id: string
+  id: string;
+  meta: { touched:boolean, error:string, warning:string };
 }
 
 const MyInput: React.FC<IFieldProps> = (props: any) => {
-  return <Field id={props.id} name={props.name} component="input" className={inputs} type={props.type} placeholder={props.placeholder} />;
+  return (
+    <>
+    
+    <input {...props.input} id={props.id} name={props.name} required className={inputs} type={props.type} placeholder={props.placeholder}  />
+  {props.meta.touched && (props.meta.error && <span className={validationSpan}>{props.meta.error}</span>)}
+  
+    </>
+  )
+  // <Field id={props.id} name={props.name} component="input" className={inputs} type={props.type} placeholder={props.placeholder} />;
 };
 export default MyInput;

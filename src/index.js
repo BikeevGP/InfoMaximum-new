@@ -20,7 +20,6 @@ const MainApp = () => {
 
 let store = createStore(Reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 store.dispatch(addString("hello"));
-console.log(store.getState());
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>

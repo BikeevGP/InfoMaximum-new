@@ -4,6 +4,7 @@ export const appWrapper = style({
   height: "100vh",
   width: "100%",
   minWidth: "426px",
+  minHeight: "600px",
   background: "linear-gradient(213.53deg, #6879BB 7.06%, #9300BB 95.23%)"
 });
 
@@ -18,8 +19,7 @@ export const formlayer = style({
   background: "white",
   width: "424px",
   margin: "0 auto",
-  minHeight: "80vh",
-  height:"81.5vh",
+  minHeight: "85vh",
   borderRadius: "2px"
 });
 
@@ -67,7 +67,8 @@ export const button = style({
 
 export const inputs = style({
   display: "block",
-  marginBottom: "12px",
+  marginTop:"11px",
+  marginBottom: "2px",
   width: "calc(100% - 22px)",
   height: "24px",
   padding: "5px 11px",
@@ -130,4 +131,12 @@ export const registrationTagH2 = style({
   color: "#404064",
   margin: "0",
   marginBottom: "20px"
+});
+export const validationSpan = style({
+  fontFamily: "Open Sans",
+  fontStyle: "normal",
+  fontWeight: "bold",
+  fontSize: "12px",
+  color: "#cc3300",
+  paddingLeft:"10px"
 });

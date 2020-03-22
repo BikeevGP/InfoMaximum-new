@@ -9,8 +9,9 @@ import {
   userLayerLabels,
 } from "../styles/Profile.styles";
 import MyButton from "./button";
-import { reduxForm } from 'redux-form';
+import { reduxForm, Field } from 'redux-form';
 import MyInput from './MyInputs';
+import {maxLength, minLength8, emailTest, checkRePassword, minLength} from '../store/validation';
 
 
 let Profile = props => {
@@ -32,7 +33,7 @@ let Profile = props => {
             <label className={userLayerLabels} htmlFor="email">
               Электронная почта
             </label>
-            <label className={userLayerLabels} htmlFor="newPassword">
+            <label className={userLayerLabels} htmlFor="password">
               Новый пароль
             </label>
             <label className={userLayerLabels} htmlFor="reEnterPassword">
@@ -40,16 +41,16 @@ let Profile = props => {
             </label>
           </div>
           <div className={divInputs}>
-            <MyInput id="name" name="name" type="text"/>
-            <MyInput id="secondName" name="secondName" type="text"/>
-            <MyInput id="email" name="email" type="text"/>
-            <MyInput id="newPassword" name="newPassword" type="password"/>
-            <MyInput id="reEnterPassword" name="reEnterPassword" type="password"/>
+            <Field id="name" name="name" type="text" component={MyInput} validate={[minLength, maxLength]}/>
+            <Field id="secondName" name="secondName" type="text" component={MyInput} validate={[minLength, maxLength]}/>
+            <Field id="email" name="email" type="text" component={MyInput} validate={[emailTest]}/>
+            <Field id="password" name="password" type="password" component={MyInput} validate={[minLength8, maxLength]}/>
+            <Field id="reEnterPassword" name="reEnterPassword" type="password" component={MyInput} validate={[checkRePassword]}/>
           </div>
         </form>
       </div>
     </>
   );
 };
-Profile = reduxForm({form: "Profile"})(Profile);
+Profile = reduxForm({form: "Profile", initialValues:({name: "Борис", secondName:"Годунов", email:"borgod@gmail.com"})})(Profile);
 export default Profile;
