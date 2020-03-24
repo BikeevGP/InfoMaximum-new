@@ -6,19 +6,37 @@ import {
   userLayer,
   divInputs,
   divLabels,
-  userLayerLabels,
+  userLayerLabels
 } from "../styles/Profile.styles";
 import MyButton from "./button";
-import { reduxForm, Field } from 'redux-form';
-import MyInput from './MyInputs';
-import {maxLength, minLength8, emailTest, checkRePassword, minLength} from '../store/validation';
-
+import { reduxForm, Field, formValueSelector } from "redux-form";
+import MyInput from "./MyInputs";
+import { connect } from "react-redux";
+import { useMutation, useQuery } from "@apollo/react-hooks";
+import {
+  maxLength,
+  minLength8,
+  emailTest,
+  checkRePassword,
+  minLength
+} from "../store/validation";
+import loadDataProfile from "../quieres/loadDataProfile";
 
 let Profile = props => {
+  const { data } = useQuery(loadDataProfile, {
+    onCompleted() {
+      props.initialize({
+        name: data?.currentUser.firstName,
+        secondName: data?.currentUser.secondName,
+        email: data?.currentUser.email
+      });
+    }
+  });
+  console.warn(data?.currentUser);
   return (
     <>
       <div className={middleLine}>
-        <h2 className={middleLineTagH2}>Борис Годунов. Редактирование</h2>
+        <h2 className={middleLineTagH2}>{data?.currentUser.firstName} {data?.currentUser.secondName}. Редактирование</h2>
         <MyButton value="Сохранить" className={button} />
       </div>
       <div className={userLayer}>
@@ -41,16 +59,50 @@ let Profile = props => {
             </label>
           </div>
           <div className={divInputs}>
-            <Field id="name" name="name" type="text" component={MyInput} validate={[minLength, maxLength]}/>
-            <Field id="secondName" name="secondName" type="text" component={MyInput} validate={[minLength, maxLength]}/>
-            <Field id="email" name="email" type="text" component={MyInput} validate={[emailTest]}/>
-            <Field id="password" name="password" type="password" component={MyInput} validate={[minLength8, maxLength]}/>
-            <Field id="reEnterPassword" name="reEnterPassword" type="password" component={MyInput} validate={[checkRePassword]}/>
+            <Field
+              id="name"
+              name="name"
+              type="text"
+              component={MyInput}
+              validate={[minLength, maxLength]}
+            />
+            <Field
+              id="secondName"
+              name="secondName"
+              type="text"
+              component={MyInput}
+              validate={[minLength, maxLength]}
+            />
+            <Field
+              id="email"
+              name="email"
+              type="text"
+              component={MyInput}
+              validate={[emailTest]}
+            />
+            <Field
+              id="password"
+              name="password"
+              type="password"
+              component={MyInput}
+              validate={[minLength8, maxLength]}
+            />
+            <Field
+              id="reEnterPassword"
+              name="reEnterPassword"
+              type="password"
+              component={MyInput}
+              validate={[checkRePassword]}
+            />
           </div>
         </form>
       </div>
     </>
   );
 };
-Profile = reduxForm({form: "Profile", initialValues:({name: "Борис", secondName:"Годунов", email:"borgod@gmail.com"})})(Profile);
+
+Profile = reduxForm({
+  form: "Profile"
+})(Profile);
+
 export default Profile;
