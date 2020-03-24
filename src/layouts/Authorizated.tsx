@@ -11,10 +11,12 @@ import { Route } from "react-router-dom";
 import Profile from "../components/Profile";
 import Menu from '../components/menu';
 
+
 interface IAuthProps {}
 
 const Authorizated: React.FC<IAuthProps> = (props:any) => {
   const [isVisibleMenu, setState] = React.useState(false);
+
   return (
     <>
       <div className={appWrapper}>

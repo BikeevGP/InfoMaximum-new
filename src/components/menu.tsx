@@ -1,33 +1,57 @@
-import React from 'react';
-import {menuTop, menuDown,menu, procesetImg, itemMenu, itemIcon, itemTagP} from '../styles/Menu.styles';
-import Proceset from '../img/proceset';
-import UserIcon from '../img/usericon';
-import Process from '../img/Process';
+import React from "react";
+import {
+  menuTop,
+  menuDown,
+  menu,
+  procesetImg,
+  itemMenu,
+  itemIcon,
+  itemTagP
+} from "../styles/Menu.styles";
+import Proceset from "../img/proceset";
+import UserIcon from "../img/usericon";
+import ExitIcon from "../img/exit";
+import Process from "../img/Process";
+import { useQuery } from "@apollo/react-hooks";
+import GetUsername from "../quieres/loadDataProfile";
+import { NavLink } from "react-router-dom";
 
-
-
-const Menu = () =>{
-
-    return(
-        <>
-        <div className={menuTop}>
-           <Proceset className={procesetImg}/>
+const Menu = () => {
+  const { data } = useQuery(GetUsername);
+  return (
+    <>
+      <div className={menuTop}>
+        <Proceset className={procesetImg} />
+      </div>
+      <div className={menuDown}>
+        <div className={itemMenu}>
+          <NavLink to="/profile">
+            <UserIcon className={itemIcon} />
+            <p className={itemTagP}>
+              {data?.currentUser.firstName} {data?.currentUser.secondName}
+            </p>
+          </NavLink>
         </div>
-        <div className={menuDown}>
-            <div className={itemMenu}>
-                <UserIcon className={itemIcon} />
-                <p className={itemTagP}>UserName</p>
-            </div>
-            <div className={itemMenu}>
-                <Process className={itemIcon}/>
-                <p className={itemTagP}>Список процессов</p>
-            </div>
+        <div className={itemMenu}>
+          <NavLink to="/psa">
+            <Process className={itemIcon} />
+            <p className={itemTagP}>Список процессов</p>
+          </NavLink>
         </div>
-        <div className={menu}>
-            
+        <div
+          className={itemMenu}
+          onClick={() => {
+            localStorage.removeItem("token");
+            window.location.href = "/";
+          }}
+        >
+          <ExitIcon className={itemIcon} />
+          <p className={itemTagP}>Выход</p>
         </div>
-        </>
-    );
-}
+      </div>
+      <div className={menu}></div>
+    </>
+  );
+};
 
 export default Menu;

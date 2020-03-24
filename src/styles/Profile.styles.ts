@@ -107,3 +107,22 @@ export const divInputs = style({
   display: "inline-block",
   minWidth: "435px"
 });
+export const desabledButton = style({
+  position: "absolute",
+  right: "22px",
+  top: "6px",
+  background: "#FFCE0C",
+  borderRadius: "4px",
+  border: "0",
+  padding: "7px 24px",
+  fontFamily: "Open Sans",
+  fontStyle: "normal",
+  fontWeight: "bold",
+  fontSize: "12px",
+  lineHeight: "16px",
+  alignItems: "center",
+  textAlign: "center",
+  color: "#333333",
+  outline: "none",
+  opacity: 0.5
+});

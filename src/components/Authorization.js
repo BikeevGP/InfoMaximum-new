@@ -9,6 +9,7 @@ import { emailTest} from '../store/validation';
 import {useMutation} from "@apollo/react-hooks";
 import { connect } from 'react-redux';
 import LoginQuery from '../quieres/loginMutation';
+import passwordInput from '../components/inputPassword';
 
 
 
@@ -16,12 +17,12 @@ let AuthorizationBody = (props) => {
 
   const [startLogin, {data, loading}] = useMutation(LoginQuery);
   if (data?.login?.token && !loading) localStorage.setItem('token', data.login.token);
-  if (localStorage.getItem('token')) window.location="/profile";
+  if (localStorage.getItem('token')) window.location.href="/profile";
   return (
     <>
       <form action="#">
         <Field name="email" type="text" placeholder="Электронная почта" validate={[emailTest]} component={MyInput} />
-        <Field name="password" type="password" placeholder="Пароль" component={MyInput} />
+        <Field name="password" placeholder="Пароль" component={passwordInput} />
         <MyButton value="Войти в систему" className={button} onClick={e =>{
           e.preventDefault();
           startLogin({variables:{email: props.email, password: props.password}});

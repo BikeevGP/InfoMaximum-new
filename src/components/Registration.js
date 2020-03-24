@@ -19,6 +19,7 @@ import {
 } from "../store/validation";
 import RegistrationQuery from "../quieres/registrationMutation";
 import { useMutation } from "@apollo/react-hooks";
+import PasswordInput from './inputPassword';
 
 let Registration = props => {
   const [startRegistrationQuery, { data, loading }] = useMutation(
@@ -53,16 +54,14 @@ let Registration = props => {
         />
         <Field
           name="password"
-          type="password"
           placeholder="Введите пароль"
-          component={MyInput}
+          component={PasswordInput}
           validate={[maxLength, minLength8]}
         />
         <Field
           name="rePassword"
-          type="password"
           placeholder="Повторите пароль"
-          component={MyInput}
+          component={PasswordInput}
           validate={[checkRePassword]}
         />
         <MyButton

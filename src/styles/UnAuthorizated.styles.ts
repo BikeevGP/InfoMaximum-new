@@ -1,4 +1,5 @@
 import { style } from "typestyle";
+import { relative } from "path";
 
 export const appWrapper = style({
   height: "100vh",
@@ -66,7 +67,7 @@ export const button = style({
 });
 
 export const inputs = style({
-  display: "block",
+  display: "inline-block",
   marginTop:"11px",
   marginBottom: "2px",
   width: "calc(100% - 22px)",
@@ -140,3 +141,13 @@ export const validationSpan = style({
   color: "#cc3300",
   paddingLeft:"10px"
 });
+
+export const inputPasswordLayer = style({
+  position:"relative"
+})
+export const eye = style({
+  position:"absolute",
+  top: "26px",
+  right: "12px",
+  cursor:"pointer"
+})
