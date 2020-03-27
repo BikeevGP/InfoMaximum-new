@@ -1,10 +1,11 @@
 import { style } from "typestyle";
 
 export const appWrapper = style({
-  height: "100vh",
+  height: "100%",
+  minHeight:"100vh",
   width: "100%",
   background: "#ebf2fb",
-  minWidth: "785px"
+  minWidth: "1170px"
 });
 
 export const navLayer = style({

@@ -23,7 +23,6 @@ const PasswordInput: React.FC<IFieldProps> = (props: any) => {
         {...props.input}
         id={props.id}
         name={props.name}
-        required
         className={inputs}
         type={!visiblePassword ? "password" : "text"}
         placeholder={props.placeholder}
@@ -33,8 +32,9 @@ const PasswordInput: React.FC<IFieldProps> = (props: any) => {
           className={eye}
           onClick={() => setVisible(!visiblePassword)}
         />
-      ) : <OpenEye className={eye}
-      onClick={() => setVisible(!visiblePassword)}/>}
+      ) : (
+        <OpenEye className={eye} onClick={() => setVisible(!visiblePassword)} />
+      )}
       {props.meta.touched && props.meta.error && (
         <span className={validationSpan}>{props.meta.error}</span>
       )}

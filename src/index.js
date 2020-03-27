@@ -9,6 +9,7 @@ import Reducer from "./store/reducers/index.reducers";
 import addString from "./store/actions/actions";
 import {ApolloProvider} from "@apollo/react-hooks";
 import {client} from "./quieres/apolloClient";
+import ProcessPage from './components/Process';
 
 const MainApp = () => {
   return (
@@ -21,6 +22,9 @@ const MainApp = () => {
         {localStorage.getItem('token') ? <Redirect to="/profile"/> : <UnAuthorizater/>}
         </Route>
         <Route exact path="/profile">
+        {localStorage.getItem('token') ? <Authorizated/> : <Redirect to="/"/> }
+        </Route>
+        <Route exact path="/process">
         {localStorage.getItem('token') ? <Authorizated/> : <Redirect to="/"/> }
         </Route>
       </ApolloProvider>

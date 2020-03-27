@@ -33,7 +33,7 @@ const Menu = () => {
           </NavLink>
         </div>
         <div className={itemMenu}>
-          <NavLink to="/psa">
+          <NavLink to="/process">
             <Process className={itemIcon} />
             <p className={itemTagP}>Список процессов</p>
           </NavLink>

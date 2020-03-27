@@ -1,11 +1,10 @@
 import { style } from "typestyle";
-import { relative } from "path";
 
 export const appWrapper = style({
-  height: "100vh",
+  height: "100%",
   width: "100%",
   minWidth: "426px",
-  minHeight: "600px",
+  minHeight: "100vh",
   background: "linear-gradient(213.53deg, #6879BB 7.06%, #9300BB 95.23%)"
 });
 

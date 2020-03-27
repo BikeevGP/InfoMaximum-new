@@ -2,15 +2,16 @@ import React from "react";
 import {
   middleLine,
   middleLineTagH2,
-  button,
+  profileButton,
   userLayer,
   divInputs,
   divLabels,
   userLayerLabels,
-  desabledButton
+  desabledButton,
+  
 } from "../styles/Profile.styles";
 import MyButton from "./button";
-import { reduxForm, Field, formValueSelector } from "redux-form";
+import { reduxForm, Field, formValueSelector, isDirty, isValid } from "redux-form";
 import MyInput from "./MyInputs";
 import { connect } from "react-redux";
 import { useMutation, useQuery } from "@apollo/react-hooks";
@@ -23,10 +24,9 @@ import {
 } from "../store/validation";
 import loadDataProfile from "../quieres/loadDataProfile";
 import PasswordInput from './inputPassword';
+import EditUser from '../quieres/editUser';
 
-let Profile = props => {
-
-  const [dataChanged, setChanged] = React.useState(false);
+const Profile = props => {
   const {data} = useQuery(loadDataProfile, {
     onCompleted() {
       props.initialize({
@@ -36,15 +36,24 @@ let Profile = props => {
       });
     }
   });
-
+  const [startEditUser] = useMutation(EditUser, {refetchQueries: [`loadData`]});
+  const { handleSubmit } = props;
   return (
     <>
       <div className={middleLine}>
         <h2 className={middleLineTagH2}>{data?.currentUser.firstName} {data?.currentUser.secondName}. Редактирование</h2>
-        <MyButton value="Сохранить" className={!dataChanged ? desabledButton : button} />
       </div>
       <div className={userLayer}>
-        <form >
+        <form onSubmit={handleSubmit(event =>{
+          startEditUser({variables:{
+            id: data.currentUser.id,
+            email: event.email,
+            firstName: event.name,
+            secondName: event.secondName,
+            password: event.password
+          }});
+          console.log("event", event);
+        })}>
           <div className={divLabels}>
             <label className={userLayerLabels} htmlFor="name">
               Имя
@@ -99,27 +108,18 @@ let Profile = props => {
               validate={[checkRePassword]}
             />
           </div>
+          <MyButton value="Сохранить" className={!props.dirty ? desabledButton : profileButton}/>
+        
         </form>
       </div>
     </>
   );
 };
 
-Profile = reduxForm({
-  form: "Profile"
-})(Profile);
-const selector = formValueSelector("Profile");
-Profile = connect(state => {
-  const name = selector(state, "name");
-  const sname = selector(state, "secondName");
-  const email = selector(state, "email");
-  const password = selector(state, "password");
-  return {
-    name,
-    sname,
-    email,
-    password
-  };
-})(Profile);
 
-export default Profile;
+
+
+export default reduxForm({
+  form: "Profile"
+})(connect(state =>{return{    dirty: isDirty("Profile"),
+valid: isValid("Profile")}})( Profile));

@@ -10,6 +10,7 @@ import NavIcon from "../img/NavIcon";
 import { Route } from "react-router-dom";
 import Profile from "../components/Profile";
 import Menu from '../components/menu';
+import ProcessPage from '../components/Process';
 
 
 interface IAuthProps {}
@@ -28,6 +29,7 @@ const Authorizated: React.FC<IAuthProps> = (props:any) => {
         </div>
         <div className={workPlace}>
           <Route exact path="/profile" component={Profile} />
+          <Route exact path="/process" component={ProcessPage} />
         </div>
       </div>
     </>

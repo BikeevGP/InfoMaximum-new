@@ -3,48 +3,52 @@ import MyButton from "./button";
 import { button, linkClass } from "../styles/UnAuthorizated.styles";
 import Warning from "./ErrorLayer";
 import { NavLink } from "react-router-dom";
-import { reduxForm, Field, formValueSelector} from 'redux-form';
-import MyInput from './MyInputs';
-import { emailTest} from '../store/validation';
-import {useMutation} from "@apollo/react-hooks";
-import { connect } from 'react-redux';
-import LoginQuery from '../quieres/loginMutation';
-import passwordInput from '../components/inputPassword';
+import { reduxForm, Field } from "redux-form";
+import MyInput from "./MyInputs";
+import { emailTest } from "../store/validation";
+import { useMutation } from "@apollo/react-hooks";
 
+import LoginQuery from "../quieres/loginMutation";
+import passwordInput from "../components/inputPassword";
 
+const AuthorizationBody = props => {
+  const [startLogin] = useMutation(LoginQuery);
+  const [graphError, setGraphError]= React.useState(null);
+  const { handleSubmit } = props;
 
-let AuthorizationBody = (props) => {
-
-  const [startLogin, {data, loading}] = useMutation(LoginQuery);
-  if (data?.login?.token && !loading) localStorage.setItem('token', data.login.token);
-  if (localStorage.getItem('token')) window.location.href="/profile";
   return (
     <>
-      <form action="#">
-        <Field name="email" type="text" placeholder="Электронная почта" validate={[emailTest]} component={MyInput} />
+      <form
+        onSubmit={handleSubmit(event => {
+          startLogin({
+            variables: { email: event.email, password: event.password }
+          }).then(res => {
+            localStorage.setItem("token", res?.data?.login.token);
+            window.location.href = "/profile";
+          },err => {setGraphError(err.message)});
+        })}
+      >
+        <Field
+          name="email"
+          type="text"
+          placeholder="Электронная почта"
+          validate={[emailTest]}
+          component={MyInput}
+        />
         <Field name="password" placeholder="Пароль" component={passwordInput} />
-        <MyButton value="Войти в систему" className={button} onClick={e =>{
-          e.preventDefault();
-          startLogin({variables:{email: props.email, password: props.password}});
-        }}/>
+        <MyButton
+          value="Войти в систему"
+          className={button}
+        />
       </form>
       <NavLink to="/registration" className={linkClass}>
         Зарегистрироваться
       </NavLink>
-      <Warning msg="Сообщение об ошибки" />
+      {graphError ? <Warning msg={graphError} /> : null}
     </>
   );
 };
-AuthorizationBody =reduxForm({form:"Auth"})(AuthorizationBody);
-const selector = formValueSelector('Auth');
-AuthorizationBody = connect(state => {
-  const email = selector(state, 'email');
-  const password = selector(state, 'password');
-  return {
-    email,
-    password
-  }
-})(AuthorizationBody)
 
 
-export default AuthorizationBody;
+
+export default reduxForm({ form: "Auth" })(AuthorizationBody);
