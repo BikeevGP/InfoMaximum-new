@@ -3,6 +3,7 @@ import ProcessItem from "./ProcessItem";
 import { useQuery } from "@apollo/react-hooks";
 
 import GetProcessList from "../quieres/getProcess";
+
 const ProcessPage = props => {
   const { data, loading } = useQuery(GetProcessList, {
     onCompleted() {
@@ -20,6 +21,11 @@ const ProcessPage = props => {
               countReplay={item.numberOfExecutions}
               scenarios={item.numberOfScenarios}
               staff={item.employeesInvolvedProcess}
+              start={item.start}
+              end={item.end}
+              loading = {item.loading}
+              averageExecutionTime = {item.averageLeadTime}
+              averageActiveTime = {item.averageActiveTime}
             />
           );
         })}
