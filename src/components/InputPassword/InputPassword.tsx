@@ -1,8 +1,7 @@
 import React from "react";
 import { inputs, validationSpan } from "../Input/Input.style";
-import { inputPasswordLayer, eye } from "./InputPassword.styles";
-import CloseEye from "../../img/CloseEye";
-import OpenEye from "../../img/OpenEye";
+import { inputPasswordLayer} from "./InputPassword.styles";
+import {CloseEye, OpenEye} from '../../img/Eye/Eye';
 
 interface IFieldProps {
   name: string;
@@ -22,14 +21,15 @@ const PasswordInput: React.FC<IFieldProps> = (props: any) => {
         className={inputs}
         type={!visiblePassword ? "password" : "text"}
         placeholder={props.placeholder}
+        required
       />
       {!visiblePassword ? (
         <CloseEye
-          className={eye}
+          
           onClick={() => setVisible(!visiblePassword)}
         />
       ) : (
-        <OpenEye className={eye} onClick={() => setVisible(!visiblePassword)} />
+        <OpenEye  onClick={() => setVisible(!visiblePassword)} />
       )}
       {props.meta.touched && props.meta.error && (
         <span className={validationSpan}>{props.meta.error}</span>

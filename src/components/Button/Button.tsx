@@ -5,7 +5,7 @@ interface IButtonProps {
   className: string;
   onClick?: React.MouseEventHandler;
 }
-const MyButton: React.FC<IButtonProps> = props => {
+const MyButton: React.FC<IButtonProps> = (props:any) => {
   return <button className={props.className} onClick={props.onClick}>{props?.value}</button>;
 };
 export default MyButton;

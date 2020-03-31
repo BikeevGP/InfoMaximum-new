@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface IProcessProps{
-className: string;
+className:string;
 };
 
 const Process:React.FC<IProcessProps> = (props:any)=>{

@@ -28,12 +28,6 @@ export const menuDown = style({
   boxShadow: "0px 1px 0px rgba(0, 0, 0, 0.3)"
 });
 
-export const procesetImg = style({
-  position: "absolute",
-  right: "24px",
-  top: "18px"
-});
-
 export const itemMenu = style({
   position: "relative",
   width: "100%",

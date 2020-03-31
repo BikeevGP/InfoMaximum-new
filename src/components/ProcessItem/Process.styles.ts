@@ -39,12 +39,6 @@ export const countReplay = style({
   width: "20%"
 });
 
-export const countReplayIcon = style({
-  position: "absolute",
-  top: "67px",
-  left: "24px"
-});
-
 export const countReplayText = style({
   position: "absolute",
   margin: 0,

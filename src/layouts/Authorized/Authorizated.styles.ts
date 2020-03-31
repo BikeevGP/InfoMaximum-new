@@ -15,14 +15,6 @@ export const navLayer = style({
   position: "relative"
 });
 
-export const navIcon = style({
-  position: "absolute",
-  left: "24px",
-  top: "18px",
-  zIndex: 5,
-  cursor: "pointer"
-});
-
 export const navTagP = style({
   position: "absolute",
   zIndex:1,

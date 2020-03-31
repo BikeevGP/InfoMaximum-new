@@ -1,7 +1,6 @@
 import React from "react";
-
+import {imgErrorClass} from './Warning.styles';
 interface IWarningProps {
-  className: string;
 }
 const Warning: React.FC<IWarningProps> = props => {
   return (
@@ -11,7 +10,7 @@ const Warning: React.FC<IWarningProps> = props => {
       viewBox="0 0 48 48"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={props.className}
+      className={imgErrorClass}
     >
       <rect width="48" height="48" fill="white" fillOpacity="0.01" />
       <path

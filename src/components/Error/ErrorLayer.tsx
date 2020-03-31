@@ -1,28 +1,16 @@
 import React from "react";
-import WarningLogo from "../../img/Warning";
-import { errorClass, imgErrorClass } from "./ErrorLayer.style";
-
+import WarningLogo from "../../img/Warning/Warning";
+import { errorClass } from "./ErrorLayer.style";
+import {translateError} from '../../Functions/translateError';
 interface IErrorProps {
   msg: string;
 }
 
-const translateError = (props: any) => {
-  switch (props) {
-    case "GraphQL error: No user with that email":
-      return "Такого пользователя не существует";
-     
-    case "GraphQL error: Incorrect password":
-      return "Не правильный пароль";
-    
-    case "GraphQL error: This email is already registered":
-      return "Этот email уже занят";
-  }
-};
 const ErrorLayer: React.FC<IErrorProps> = (props: any) => {
   return (
     <>
       <div className={errorClass}>
-        <WarningLogo className={imgErrorClass} />
+        <WarningLogo />
         {translateError(props.msg)}
       </div>
     </>

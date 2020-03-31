@@ -1,13 +1,11 @@
 import React from "react";
 
 interface IActivityTimerProps {
-  className: string;
 }
 
-const ActivityTimer: React.FC<IActivityTimerProps> = (props: any) => {
+const ActivityTimer: React.FC<IActivityTimerProps> = () => {
   return (
     <svg
-      className={props.className}
       width="24"
       height="24"
       viewBox="0 0 24 24"

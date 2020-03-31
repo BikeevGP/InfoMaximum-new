@@ -1,6 +1,6 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import Logotype from "../../img/Logotype";
+import Logotype from "../../img/Logotype/Logotype";
 import AuthorizationBody from "../../containers/AuthorizationBody/Authorization";
 import RegistrationBody from "../../containers/RegistrationBody/Registration";
 import {

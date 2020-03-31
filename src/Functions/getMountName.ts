@@ -1,5 +1,9 @@
-const getMonthName = props => {
-    switch (Number(props)) {
+interface IGetMonthName{
+  (counthMonth:Number):string|null;
+}
+
+const getMonthName:IGetMonthName = props => {
+    switch (props) {
       case 0:
         return "января";
       case 1:

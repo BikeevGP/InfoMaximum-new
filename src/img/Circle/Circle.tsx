@@ -1,13 +1,12 @@
 import React from "react";
-
+import {countReplayIcon} from './Circle.stykes';
 interface ICircleProps {
-  className: string;
 }
 
 const Circle: React.FC<ICircleProps> = (props: any) => {
   return (
     <svg
-      className={props.className}
+      className={countReplayIcon}
       width="24"
       height="24"
       viewBox="0 0 24 24"

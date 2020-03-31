@@ -33,7 +33,7 @@ const MainApp = () => {
 
 let store = createStore(
   Reducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  (window as any).__REDUX_DEVTOOLS_EXTENSION__ && (window as any).__REDUX_DEVTOOLS_EXTENSION__()
 );
 store.dispatch(addString("hello"));
 ReactDOM.render(

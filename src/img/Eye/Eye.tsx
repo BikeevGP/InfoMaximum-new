@@ -1,11 +1,11 @@
 import React, { MouseEventHandler } from "react";
+import {eye} from "./Eye.styles";
 
 interface ICloseEyeProps {
-  className?: String;
   onClick?: MouseEventHandler;
 }
 
-export const closeEye: React.FC<ICloseEyeProps> = (props: any) => {
+export const CloseEye: React.FC<ICloseEyeProps> = (props: any) => {
   return (
     <svg
       width="12"
@@ -13,7 +13,7 @@ export const closeEye: React.FC<ICloseEyeProps> = (props: any) => {
       viewBox="0 0 12 12"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={props.className}
+      className={eye}
       onClick={props.onClick}
     >
       <rect width="12" height="12" fill="white" fillOpacity="0.01" />
@@ -28,7 +28,7 @@ export const closeEye: React.FC<ICloseEyeProps> = (props: any) => {
     </svg>
   );
 };
-export const openEye: React.FC<ICloseEyeProps> = (props: any) => {
+export const OpenEye: React.FC<ICloseEyeProps> = (props: any) => {
   return (
     <svg
       width="12"
@@ -36,7 +36,7 @@ export const openEye: React.FC<ICloseEyeProps> = (props: any) => {
       viewBox="0 0 12 12"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={props.className}
+      className={eye}
       onClick={props.onClick}
     >
       <rect width="12" height="12" fill="white" fillOpacity="0.01" />

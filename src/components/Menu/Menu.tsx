@@ -3,15 +3,14 @@ import {
   menuTop,
   menuDown,
   menu,
-  procesetImg,
   itemMenu,
   itemIcon,
   itemTagP
 } from "./Menu.styles";
-import Proceset from "../../img/Proceset";
-import UserIcon from "../../img/Usericon";
-import ExitIcon from "../../img/Exit";
-import Process from "../../img/Process";
+import Proceset from "../../img/Proceset/Proceset";
+import UserIcon from "../../img/UserIcon/Usericon";
+import ExitIcon from "../../img/Exit/Exit";
+import Process from "../../img/Process/Process";
 import { useQuery } from "@apollo/react-hooks";
 import GetUsername from "../../quieres/LoadDataProfile";
 import { NavLink } from "react-router-dom";
@@ -21,7 +20,7 @@ const Menu = () => {
   return (
     <>
       <div className={menuTop}>
-        <Proceset className={procesetImg} />
+        <Proceset />
       </div>
       <div className={menuDown}>
         <div className={itemMenu}>

@@ -5,7 +5,6 @@ import {
   h2Tag,
   bodyLayer,
   countReplay,
-  countReplayIcon,
   countReplayText,
   countReplaySubText,
   statistics,
@@ -20,14 +19,27 @@ import {
   labelText,
   dateInLine
 } from "./Process.styles";
-import Circle from "../../img/Circle";
-import Timer from "../../img/Timer";
-import ActivityTimer from "../../img/ActivityTimer";
-import Staff from "../../img/Staff";
-import ScenariosIcon from "../../img/ScenariosIcon";
+import Circle from "../../img/Circle/Circle";
+import Timer from "../../img/Timer/Timer";
+import ActivityTimer from "../../img/ActivityTimer/ActivityTimer";
+import Staff from "../../img/Staff/Staff";
+import ScenariosIcon from "../../img/ScenariosIcon/ScenariosIcon";
 import getDate  from "../../Functions/getDate";
 import getHourAndMin from "../../Functions/getHourAndMin";
-const ProcessItem = props => {
+
+interface IPropcessItemProps{
+  name: string;
+  countReplay: Number;
+  averageExecutionTime: Number;
+  averageActiveTime: Number;
+  staff: Number;
+  scenarios: Number;
+  start:Number;
+  end: Number;
+  loading: Number;
+}
+
+const ProcessItem:React.FC<IPropcessItemProps> = (props:any):any => {
   return (
     <div className={ItemLayer}>
       <div className={topLine}>
@@ -35,7 +47,7 @@ const ProcessItem = props => {
       </div>
       <div className={bodyLayer}>
         <div className={countReplay}>
-          <Circle className={countReplayIcon} />
+          <Circle />
           <p className={countReplayText}>{props.countReplay}</p>
           <p className={countReplaySubText}>выполнено раз</p>
         </div>

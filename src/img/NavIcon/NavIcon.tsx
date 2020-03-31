@@ -1,8 +1,7 @@
 import React from "react";
-
+import {navIcon} from './NavIcon.styles'
 
 interface INavIconProps {
-  className: string;
   color?: string;
 }
 
@@ -14,7 +13,7 @@ const NavIcon: React.FC<INavIconProps> = props => {
         viewBox="0 0 24 24"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className={props.className}
+        className={navIcon}
         
       >
         <rect width="24" height="24" fill="white" fillOpacity="0.01" />

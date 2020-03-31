@@ -15,9 +15,3 @@ export const errorClass = style({
   color: "#333333"
 });
 
-export const imgErrorClass = style({
-  position: "absolute",
-  left: "48px",
-  top: "24px",
-  marginRight: "24px"
-});

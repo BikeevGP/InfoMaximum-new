@@ -1,5 +1,8 @@
 import React from "react";
-const Logotype = () => {
+
+interface ILogotype {}
+
+const Logotype: React.FC<ILogotype> = () => {
   return (
     <>
       <svg
