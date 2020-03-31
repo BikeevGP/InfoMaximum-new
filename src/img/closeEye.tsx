@@ -8,7 +8,6 @@ interface ICloseEyeProps {
 const closeEye: React.FC<ICloseEyeProps> = (props:any) => {
   return (
     <svg
-    
       width="12"
       height="12"
       viewBox="0 0 12 12"
@@ -17,7 +16,7 @@ const closeEye: React.FC<ICloseEyeProps> = (props:any) => {
       className={props.className}
       onClick={props.onClick}
     >
-      <rect width="12" height="12" fill="white" fill-opacity="0.01" />
+      <rect width="12" height="12" fill="white" fillOpacity="0.01" />
       <path
         d="M0.334437 6.03842L-2.94905e-05 5.34619L1.36085 4.66147C0.653818 3.95378 0.167203 3.38462 0.167203 3.38462C0.167203 3.38462 0.296409 3.23846 0.50928 3C1.72411 4 3.6923 6 5.99999 6V8H5.53845V7C4.8793 6.94225 4.19767 6.93953 3.65683 6.55394L2.71413 7.50008L2.1818 6.96146L3.01815 6.11542L1.85494 5.26919L0.334437 6.03842Z"
         fill="#6879BB"

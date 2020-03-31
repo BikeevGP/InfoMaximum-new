@@ -7,13 +7,13 @@ import {
   itemMenu,
   itemIcon,
   itemTagP
-} from "../styles/Menu.styles";
-import Proceset from "../img/proceset";
-import UserIcon from "../img/usericon";
-import ExitIcon from "../img/exit";
-import Process from "../img/Process";
+} from "./Menu.styles";
+import Proceset from "../../img/Proceset";
+import UserIcon from "../../img/Usericon";
+import ExitIcon from "../../img/Exit";
+import Process from "../../img/Process";
 import { useQuery } from "@apollo/react-hooks";
-import GetUsername from "../quieres/loadDataProfile";
+import GetUsername from "../../quieres/LoadDataProfile";
 import { NavLink } from "react-router-dom";
 
 const Menu = () => {

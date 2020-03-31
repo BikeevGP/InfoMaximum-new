@@ -1,6 +1,6 @@
 import React from "react";
-import WarningLogo from "../img/Warning";
-import { errorClass, imgErrorClass } from "../styles/UnAuthorizated.styles";
+import WarningLogo from "../../img/Warning";
+import { errorClass, imgErrorClass } from "./ErrorLayer.style";
 
 interface IErrorProps {
   msg: string;
@@ -10,10 +10,10 @@ const translateError = (props: any) => {
   switch (props) {
     case "GraphQL error: No user with that email":
       return "Такого пользователя не существует";
-      break;
+     
     case "GraphQL error: Incorrect password":
       return "Не правильный пароль";
-      break;
+    
     case "GraphQL error: This email is already registered":
       return "Этот email уже занят";
   }

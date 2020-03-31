@@ -1,14 +1,14 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import Logotype from "../img/Logotype";
-import AuthorizationBody from "../components/Authorization";
-import RegistrationBody from "../components/Registration";
+import Logotype from "../../img/Logotype";
+import AuthorizationBody from "../../containers/AuthorizationBody/Authorization";
+import RegistrationBody from "../../containers/RegistrationBody/Registration";
 import {
   appWrapper,
   logo,
   formlayer,
   content
-} from "../styles/UnAuthorizated.styles";
+} from "./UnAuthorizated.styles";
 
 interface IUnAuthProps {}
 const UnAuthorizatedLayout: React.FC<IUnAuthProps> = () => {

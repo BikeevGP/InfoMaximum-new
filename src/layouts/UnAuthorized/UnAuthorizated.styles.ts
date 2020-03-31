@@ -64,25 +64,6 @@ export const button = style({
     }
   }
 });
-
-export const inputs = style({
-  display: "inline-block",
-  marginTop:"11px",
-  marginBottom: "2px",
-  width: "calc(100% - 22px)",
-  height: "24px",
-  padding: "5px 11px",
-  border: "1px solid #D6DCE9",
-  borderRadius: "4px",
-  lineHeight: "24px",
-  color: "#6879BB",
-  $nest: {
-    "&::placeholder": {
-      color: "#CCCCCC"
-    }
-  }
-});
-
 export const linkClass = style({
   color: "#3167BA",
   fontFamily: "Open Sans",
@@ -91,28 +72,6 @@ export const linkClass = style({
   fontSize: "14px",
   lineHeight: "19px",
   textDecoration: "none"
-});
-
-export const errorClass = style({
-  marginTop: "24px",
-  marginLeft: "-48px",
-  marginRight: "-48px",
-  backgroundColor: "#ffe9db",
-  padding: "36px 48px 36px 120px",
-  position: "relative",
-  fontFamily: "Open Sans",
-  fontStyle: "normal",
-  fontWeight: "normal",
-  fontSize: "14px",
-  lineHeight: "19px",
-  color: "#333333"
-});
-
-export const imgErrorClass = style({
-  position: "absolute",
-  left: "48px",
-  top: "24px",
-  marginRight: "24px"
 });
 export const registrationTagP = style({
   fontFamily: "Open Sans",
@@ -132,21 +91,3 @@ export const registrationTagH2 = style({
   margin: "0",
   marginBottom: "20px"
 });
-export const validationSpan = style({
-  fontFamily: "Open Sans",
-  fontStyle: "normal",
-  fontWeight: "bold",
-  fontSize: "12px",
-  color: "#cc3300",
-  paddingLeft:"10px"
-});
-
-export const inputPasswordLayer = style({
-  position:"relative"
-})
-export const eye = style({
-  position:"absolute",
-  top: "26px",
-  right: "12px",
-  cursor:"pointer"
-})

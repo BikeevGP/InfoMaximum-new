@@ -5,12 +5,12 @@ import {
   navIcon,
   navTagP,
   workPlace
-} from "../styles/Authorizated.styles";
-import NavIcon from "../img/NavIcon";
+} from "./Authorizated.styles";
+import NavIcon from "../../img/NavIcon";
 import { Route } from "react-router-dom";
-import Profile from "../components/Profile";
-import Menu from '../components/menu';
-import ProcessPage from '../components/Process';
+import Profile from "../../containers/ProfileBody/Profile";
+import Menu from '../../components/Menu/Menu';
+import ProcessPage from '../../containers/ProcessBody/Process';
 
 
 interface IAuthProps {}

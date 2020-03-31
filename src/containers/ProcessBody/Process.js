@@ -1,15 +1,11 @@
 import React from "react";
-import ProcessItem from "./ProcessItem";
+import ProcessItem from "../../components/ProcessItem/ProcessItem";
 import { useQuery } from "@apollo/react-hooks";
 
-import GetProcessList from "../quieres/getProcess";
+import GetProcessList from "../../quieres/GetProcess";
 
 const ProcessPage = props => {
-  const { data, loading } = useQuery(GetProcessList, {
-    onCompleted() {
-      console.log(data);
-    }
-  });
+  const { data, loading } = useQuery(GetProcessList);
   return (
     <div>
       {!loading &&
@@ -26,6 +22,7 @@ const ProcessPage = props => {
               loading = {item.loading}
               averageExecutionTime = {item.averageLeadTime}
               averageActiveTime = {item.averageActiveTime}
+              
             />
           );
         })}

@@ -1,15 +1,15 @@
 import React from "react";
-import MyButton from "./button";
-import { button, linkClass } from "../styles/UnAuthorizated.styles";
-import Warning from "./ErrorLayer";
+import MyButton from "../../components/Button/Button";
+import { button, linkClass } from "../../layouts/UnAuthorized/UnAuthorizated.styles";
+import Warning from "../../components/Error/ErrorLayer";
 import { NavLink } from "react-router-dom";
 import { reduxForm, Field } from "redux-form";
-import MyInput from "./MyInputs";
-import { emailTest } from "../store/validation";
+import MyInput from "../../components/Input/MyInputs";
+import { emailTest } from "../../store/Validation";
 import { useMutation } from "@apollo/react-hooks";
 
-import LoginQuery from "../quieres/loginMutation";
-import passwordInput from "../components/inputPassword";
+import LoginQuery from "../../quieres/LoginMutation";
+import passwordInput from "../../components/InputPassword/InputPassword";
 
 const AuthorizationBody = props => {
   const [startLogin] = useMutation(LoginQuery);

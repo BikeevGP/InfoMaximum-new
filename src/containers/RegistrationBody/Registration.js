@@ -4,22 +4,22 @@ import {
   linkClass,
   registrationTagP,
   registrationTagH2
-} from "../styles/UnAuthorizated.styles";
-import MyButton from "./button";
-import ErrorLayer from './ErrorLayer';
+} from "../../layouts/UnAuthorized/UnAuthorizated.styles";
+import MyButton from "../../components/Button/Button";
+import ErrorLayer from "../../components/Error/ErrorLayer";
 import { NavLink } from "react-router-dom";
 import { reduxForm, Field } from "redux-form";
-import MyInput from "./MyInputs";
+import MyInput from "../../components/Input/MyInputs";
 import {
   maxLength,
   minLength,
   emailTest,
   checkRePassword,
   minLength8
-} from "../store/validation";
-import RegistrationQuery from "../quieres/registrationMutation";
+} from "../../store/Validation";
+import RegistrationQuery from "../../quieres/RegistrationMutation";
 import { useMutation } from "@apollo/react-hooks";
-import PasswordInput from "./inputPassword";
+import PasswordInput from "../../components/InputPassword/InputPassword";
 
 const Registration = props => {
   const [startRegistrationQuery] = useMutation(RegistrationQuery);
@@ -37,12 +37,15 @@ const Registration = props => {
               email: event.email,
               password: event.password
             }
-          }).then(res => {
-            localStorage.setItem("token", res?.data?.signup);
-            window.location.href = "/profile";
-          }, err=>{
-            setGraphError(err.message);
-          });
+          }).then(
+            res => {
+              localStorage.setItem("token", res?.data?.signup);
+              window.location.href = "/profile";
+            },
+            err => {
+              setGraphError(err.message);
+            }
+          );
         })}
       >
         <Field
@@ -86,7 +89,7 @@ const Registration = props => {
           Вход
         </NavLink>
       </p>
-      {graphError ? <ErrorLayer msg={graphError}/> : null}
+      {graphError ? <ErrorLayer msg={graphError} /> : null}
     </>
   );
 };

@@ -19,54 +19,17 @@ import {
   allLine,
   labelText,
   dateInLine
-} from "../styles/Process.styles";
-import Circle from "../img/circle";
-import Timer from "../img/timer";
-import ActivityTimer from "../img/activityTimer";
-import Staff from "../img/staff";
-import ScenariosIcon from "../img/scenariosIcon";
-
-const getMonthName = props =>{
-  switch (Number(props)) {
-    case 0: return "января";
-    case 1: return "февраля";
-    case 2: return "марта";
-    case 3: return "апреля";
-    case 4: return "мая";
-    case 5: return "июня";
-    case 6: return "июля";
-    case 7: return "августа";
-    case 8: return "сентября";
-    case 9: return "октября";
-    case 10: return "ноября";
-    case 11: return "декабря";
-      
-      
-  
-    default: return null;
-      
-  }
-}
-
-const getDate = props =>{
-  let fullDate = new Date(Number(props));
-  let foundedDate = fullDate.getDate();
-  let foundedYear = fullDate.getFullYear();
-  let foundedMonth = getMonthName(fullDate.getMonth());
-  return foundedDate + " " + foundedMonth + " " + foundedYear;
-}
-
-const getHourAndMin = props => {
-  
-  let foundedHour = Math.trunc(props/3600000);
-  let foundedMin = Math.trunc(props/60000) - (foundedHour * 60);
-  return foundedHour + "ч. " + foundedMin + "мин.";
-}
-
+} from "./Process.styles";
+import Circle from "../../img/Circle";
+import Timer from "../../img/Timer";
+import ActivityTimer from "../../img/ActivityTimer";
+import Staff from "../../img/Staff";
+import ScenariosIcon from "../../img/ScenariosIcon";
+import getDate  from "../../Functions/getDate";
+import getHourAndMin from "../../Functions/getHourAndMin";
 const ProcessItem = props => {
-  
   return (
-    <div className={ItemLayer} key={props.id}>
+    <div className={ItemLayer}>
       <div className={topLine}>
         <h2 className={h2Tag}>{props.name}</h2>
       </div>
@@ -79,12 +42,19 @@ const ProcessItem = props => {
         <div className={statistics}>
           <div className={averageExecutionTime}>
             <Timer />
-            <p className={mainText}>{getHourAndMin(Number(props.averageExecutionTime))}</p>
+            <p className={mainText}>
+              {getHourAndMin(Number(props.averageExecutionTime))}
+            </p>
             <p className={subText}>среднее время выполнения</p>
           </div>
           <div className={averageActiveTime}>
             <ActivityTimer />
-            <p className={mainText}>1ч 7 мин (10.5%)</p>
+            <p className={mainText}>
+              {getHourAndMin(
+                Number(props.averageActiveTime),
+                Number(props.averageExecutionTime)
+              )}
+            </p>
             <p className={subText}>среднее активное время</p>
           </div>
           <div className={insideProcess}>
@@ -102,7 +72,6 @@ const ProcessItem = props => {
           <div className={allLine}>
             <p className={labelText}>Начало</p>
             <p className={dateInLine}>{getDate(props.start)}</p>
-            
           </div>
           <div className={allLine}>
             <p className={labelText}>Окончание</p>

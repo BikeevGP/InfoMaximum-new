@@ -1,15 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Redirect } from "react-router-dom";
-import UnAuthorizater from "./layouts/UnAuthorizated";
-import Authorizated from "./layouts/Authorizated";
+import UnAuthorizater from "./layouts/UnAuthorized/UnAuthorizated";
+import Authorizated from "./layouts/Authorized/Authorizated";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 import Reducer from "./store/reducers/index.reducers";
-import addString from "./store/actions/actions";
+import addString from "./store/actions/Actions";
 import {ApolloProvider} from "@apollo/react-hooks";
-import {client} from "./quieres/apolloClient";
-import ProcessPage from './components/Process';
+import {client} from "./quieres/ApolloClient";
 
 const MainApp = () => {
   return (

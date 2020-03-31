@@ -1,5 +1,5 @@
 import React from 'react';
-import {inputs, validationSpan} from '../styles/UnAuthorizated.styles';
+import {inputs, validationSpan} from './Input.style';
 
 interface IFieldProps {
   name: string;

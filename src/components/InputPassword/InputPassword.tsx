@@ -1,12 +1,8 @@
 import React from "react";
-import {
-  inputs,
-  validationSpan,
-  inputPasswordLayer,
-  eye
-} from "../styles/UnAuthorizated.styles";
-import CloseEye from "../img/closeEye";
-import OpenEye from "../img/openEye";
+import { inputs, validationSpan } from "../Input/Input.style";
+import { inputPasswordLayer, eye } from "./InputPassword.styles";
+import CloseEye from "../../img/CloseEye";
+import OpenEye from "../../img/OpenEye";
 
 interface IFieldProps {
   name: string;
