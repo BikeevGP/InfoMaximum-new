@@ -32,39 +32,6 @@ export const h2Tag = style({
 export const bodyLayer = style({
   position: "relative"
 });
-
-export const countReplay = style({
-  position: "absolute",
-  height: "188px",
-  width: "20%"
-});
-
-export const countReplayText = style({
-  position: "absolute",
-  margin: 0,
-  top: "64px",
-  left: "60px",
-  fontFamily: "Open Sans",
-  fontStyle: "normal",
-  fontWeight: "bold",
-  fontSize: "26px",
-  lineHeight: "35px",
-  color: "#535374"
-});
-
-export const countReplaySubText = style({
-  position: "absolute",
-  margin: 0,
-  bottom: "74px",
-  left: "60px",
-  fontFamily: "Open Sans",
-  fontStyle: "normal",
-  fontWeight: "normal",
-  fontSize: "12px",
-  lineHeight: "16px",
-  color: "#999999"
-});
-
 export const statistics = style({
   height: "188px",
   width: "calc(35% + 42px)",
@@ -74,33 +41,9 @@ export const statistics = style({
 export const averageExecutionTime = style({
   position: "absolute",
   top: "39px",
+  height:"30px",
   width: "50%"
 });
-export const mainText = style({
-  margin: 0,
-  position: "absolute",
-  top: "0px",
-  left: "36px",
-  fontFamily: "Open Sans",
-  fontStyle: "normal",
-  fontWeight: "bold",
-  fontSize: "18px",
-  lineHeight: "25px",
-  color: "#535374"
-});
-
-export const subText = style({
-  margin: 0,
-  position: "absolute",
-  left: "40px",
-  fontFamily: "Open Sans",
-  fontStyle: "normal",
-  fontWeight: "normal",
-  fontSize: "12px",
-  lineHeight: "16px",
-  color: "#999999"
-});
-
 export const averageActiveTime = style({
   margin: 0,
   position: "absolute",
@@ -131,32 +74,4 @@ export const metaData = style({
     height: "98px",
     left: "calc(55% + 61px)",
     top: "45px"
-});
-
-export const allLine = style({
-    marginBottom: "12px"
-});
-export const labelText = style({
-    margin: 0,
-    fontFamily: "Open Sans",
-    fontStyle: "normal",
-    fontWeight: "normal",
-    fontSize: "12px",
-    lineHeight: "16px",
-    color: "#999999",
-    display: "inline-block",
-    width: "70px"
-});
-
-export const dateInLine = style({
-    margin: 0,
-    position: "relative",
-    marginLeft: "20px",
-    fontFamily: "Open Sans",
-    fontStyle: "normal",
-    fontWeight: "normal",
-    fontSize: "12px",
-    lineHeight: "16px",
-    color: "#333333",
-    display: "inline"
 });

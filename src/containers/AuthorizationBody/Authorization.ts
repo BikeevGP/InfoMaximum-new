@@ -11,15 +11,17 @@ import { useMutation } from "@apollo/react-hooks";
 import LoginQuery from "../../quieres/LoginMutation";
 import passwordInput from "../../components/InputPassword/InputPassword";
 
-const AuthorizationBody = props => {
+interface IAuthorizationProps{
+}
+
+const AuthorizationBody:React.FC<IAuthorizationProps> = (props:any):any => {
   const [startLogin] = useMutation(LoginQuery);
   const [graphError, setGraphError]= React.useState(null);
   const { handleSubmit } = props;
 
   return (
-    <>
-      <form
-        onSubmit={handleSubmit(event => {
+    
+      <form onSubmit={handleSubmit(event => {
           startLogin({
             variables: { email: event.email, password: event.password }
           }).then(res => {
@@ -45,7 +47,7 @@ const AuthorizationBody = props => {
         Зарегистрироваться
       </NavLink>
       {graphError ? <Warning msg={graphError} /> : null}
-    </>
+    
   );
 };
 

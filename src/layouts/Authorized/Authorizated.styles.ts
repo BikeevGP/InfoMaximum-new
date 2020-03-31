@@ -5,7 +5,7 @@ export const appWrapper = style({
   minHeight:"100vh",
   width: "100%",
   background: "#ebf2fb",
-  minWidth: "1170px"
+  minWidth: "1220px"
 });
 
 export const navLayer = style({

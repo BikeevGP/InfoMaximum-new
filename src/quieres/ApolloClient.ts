@@ -1,6 +1,6 @@
 import ApolloClient from 'apollo-boost';
 
-export const client = new ApolloClient({
+export const client:any = new ApolloClient({
     uri: "http://localhost:4000/api",
     request: async operation => {
         const token = localStorage.getItem('token');
