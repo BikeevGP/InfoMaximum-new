@@ -1,27 +1,42 @@
+// Контейней RegistrationBody, используется в документе UnAuthorized.tsx
+// Используется в проекте для регистрации новых пользователей
+
+////// Подключения из node_modules
 import React from "react";
+import { NavLink } from "react-router-dom";
+import { reduxForm, Field } from "redux-form";
+import { useMutation } from "@apollo/react-hooks";
+
+////// Подключения стилей
 import {
   button,
   linkClass,
   registrationTagP,
   registrationTagH2
 } from "../../layouts/UnAuthorized/UnAuthorizated.styles";
+
+////// Подключения компонентов
 import MyButton from "../../components/Button/Button";
 import ErrorLayer from "../../components/Error/ErrorLayer";
-import { NavLink } from "react-router-dom";
-import { reduxForm, Field } from "redux-form";
 import MyInput from "../../components/Input/MyInputs";
+import PasswordInput from "../../components/InputPassword/InputPassword";
+
+////// Подключение валидаций
 import {
   maxLength,
   minLength,
   emailTest,
   checkRePassword,
-  minLength8
+  minLength8,
+  checkNameChar
 } from "../../store/Validation";
-import RegistrationQuery from "../../quieres/RegistrationMutation";
-import { useMutation } from "@apollo/react-hooks";
-import PasswordInput from "../../components/InputPassword/InputPassword";
 
-const Registration = props => {
+////// Подключение запросов
+import RegistrationQuery from "../../quieres/RegistrationMutation";
+
+interface IRegistrationProps {}
+
+const Registration: React.FC<IRegistrationProps> = (props: any) => {
   const [startRegistrationQuery] = useMutation(RegistrationQuery);
   const [graphError, setGraphError] = React.useState(null);
   const { handleSubmit } = props;
@@ -29,7 +44,7 @@ const Registration = props => {
     <>
       <h2 className={registrationTagH2}>Регистрация</h2>
       <form
-        onSubmit={handleSubmit(event => {
+        onSubmit={handleSubmit((event: any) => {
           startRegistrationQuery({
             variables: {
               name: event.name,
@@ -53,14 +68,14 @@ const Registration = props => {
           type="text"
           placeholder="Имя"
           component={MyInput}
-          validate={[maxLength, minLength]}
+          validate={[maxLength, minLength, checkNameChar]}
         />
         <Field
           name="sname"
           type="text"
           placeholder="Фамилия"
           component={MyInput}
-          validate={[maxLength, minLength]}
+          validate={[maxLength, minLength, checkNameChar]}
         />
         <Field
           name="email"
@@ -73,12 +88,14 @@ const Registration = props => {
           name="password"
           placeholder="Введите пароль"
           component={PasswordInput}
+          requiredPassword= {true}
           validate={[maxLength, minLength8]}
         />
         <Field
           name="rePassword"
           placeholder="Повторите пароль"
           component={PasswordInput}
+          requiredPassword= {true}
           validate={[checkRePassword]}
         />
         <MyButton value="Применить и войти" className={button} />

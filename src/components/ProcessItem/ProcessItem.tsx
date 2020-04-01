@@ -1,4 +1,9 @@
+// Компонент ProcessItem, используется в документе ProcessBody
+// Используется в проекте для визуализации информации получаемой с сервера
+
 import React from "react";
+
+////// Подключение стилей
 import {
   ItemLayer,
   topLine,
@@ -9,19 +14,30 @@ import {
   averageActiveTime,
   insideProcess,
   scenarios,
-  metaData
+  metaData,
+  onMapProcess,
+  forBorder
 } from "./Process.styles";
 
+////// Подключение изображений
 import Timer from "../../img/Timer/Timer";
 import ActivityTimer from "../../img/ActivityTimer/ActivityTimer";
 import Staff from "../../img/Staff/Staff";
 import ScenariosIcon from "../../img/ScenariosIcon/ScenariosIcon";
-import getDate from "../../Functions/getDate";
-import getHourAndMin from "../../Functions/getHourAndMin";
-import ICountReplay from '../CountReplay/CountReplay';
+import Arrow from "../../img/Arrow/Arrow";
+
+////// Подключение функций
+import getDate from "../../functions/getDate";
+import getHourAndMin from "../../functions/getHourAndMin";
+import gettingTheEnd from "../../functions/gettingTheEnd";
+
+////// Подключение компонентов
+import ICountReplay from "../CountReplay/CountReplay";
 import StatisticItem from "../Statistics/StatisticItem";
 import MetaDataItem from "../MetaData/MetaDataItem";
+
 interface IPropcessItemProps {
+  id: string;
   name: string;
   countReplay: Number;
   averageExecutionTime: Number;
@@ -38,7 +54,10 @@ const ProcessItem: React.FC<IPropcessItemProps> = (props: any): any => {
     <div className={ItemLayer}>
       <div className={topLine}>
         <h2 className={h2Tag}>{props.name}</h2>
+        <p className={onMapProcess}>На карту процесса</p>
+        <Arrow />
       </div>
+      <hr className={forBorder} />
       <div className={bodyLayer}>
         <ICountReplay countReplay={props.countReplay} />
         <div className={statistics}>
@@ -59,7 +78,7 @@ const ProcessItem: React.FC<IPropcessItemProps> = (props: any): any => {
           />
           <StatisticItem
             className={insideProcess}
-            mainText={props.staff + " сотрудников"}
+            mainText={props.staff + gettingTheEnd(props.staff)}
             iconInside={<Staff />}
             subText="участвует в процессе"
           />
@@ -73,7 +92,10 @@ const ProcessItem: React.FC<IPropcessItemProps> = (props: any): any => {
         <div className={metaData}>
           <MetaDataItem labelText="Начало" dateInside={getDate(props.start)} />
           <MetaDataItem labelText="Окончание" dateInside={getDate(props.end)} />
-          <MetaDataItem labelText="Загрузка" dateInside={getDate(props.loading)} />
+          <MetaDataItem
+            labelText="Загрузка"
+            dateInside={getDate(props.loading)}
+          />
         </div>
       </div>
     </div>

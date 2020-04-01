@@ -1,9 +1,19 @@
+// Компонент ErrorLayer, используется в документах AuthorizationBody, RegistrationBody
+// Используется в проекте для обработки ошибок сервера
+
 import React from "react";
+
+////// Подключение изображений
 import WarningLogo from "../../img/Warning/Warning";
+
+////// Подключение стилей
 import { errorClass } from "./ErrorLayer.style";
-import {translateError} from '../../Functions/translateError';
+
+////// Подключение функций
+import { translateError } from "../../functions/translateError";
+
 interface IErrorProps {
-  msg: string;
+  msg: string | null;
 }
 
 const ErrorLayer: React.FC<IErrorProps> = (props: any) => {
@@ -16,4 +26,5 @@ const ErrorLayer: React.FC<IErrorProps> = (props: any) => {
     </>
   );
 };
+
 export default ErrorLayer;

@@ -1,3 +1,4 @@
+////// Этот документ служит для получения процессов пользователя с сервера
 import { gql } from "apollo-boost";
 
 export default gql`

@@ -1,4 +1,8 @@
+// Компонент MyInputs, используется в документах AuthorizationBody, RegistrationBody и Profile
+// Используется в проекте для ввода данных и проверку на валидность
 import React from "react";
+
+//////Подключение стилей
 import { inputs, validationSpan } from "./Input.style";
 
 interface IFieldProps {
@@ -21,11 +25,11 @@ const MyInput: React.FC<IFieldProps> = (props: any) => {
         type={props.type}
         placeholder={props.placeholder}
       />
-      {props.meta.touched &&
-        props.meta.error && (
-          <span className={validationSpan}>{props.meta.error}</span>
-        )}
+      {props.meta.touched && props.meta.error && (
+        <span className={validationSpan}>{props.meta.error}</span>
+      )}
     </>
   );
 };
+
 export default MyInput;

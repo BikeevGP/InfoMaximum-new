@@ -13,7 +13,6 @@ export const ItemLayer = style({
 
 export const topLine = style({
   height: "60px",
-  borderBottom: "1px solid #D6DCE9",
   position: "relative"
 });
 
@@ -29,21 +28,25 @@ export const h2Tag = style({
   left: "24px",
   top: "12px"
 });
+
 export const bodyLayer = style({
   position: "relative"
 });
+
 export const statistics = style({
   height: "188px",
   width: "calc(35% + 42px)",
   position: "absolute",
   left: "20%"
 });
+
 export const averageExecutionTime = style({
   position: "absolute",
   top: "39px",
-  height:"30px",
+  height: "30px",
   width: "50%"
 });
+
 export const averageActiveTime = style({
   margin: 0,
   position: "absolute",
@@ -51,27 +54,47 @@ export const averageActiveTime = style({
   width: "50%"
 });
 
-
 export const insideProcess = style({
-    position: "absolute",
-    left: "calc(50% + 42px)",
-    top: "39px",
-    width: "calc(50% - 42px)"
+  position: "absolute",
+  left: "calc(50% + 42px)",
+  top: "39px",
+  width: "calc(50% - 42px)"
 });
 
 export const scenarios = style({
-    margin: 0,
-    position: "absolute",
-    left: "calc(50% + 42px)",
-    bottom: "64px",
-    width: "calc(50% - 42px)"
+  margin: 0,
+  position: "absolute",
+  left: "calc(50% + 42px)",
+  bottom: "64px",
+  width: "calc(50% - 42px)"
 });
 
 export const metaData = style({
-    position: "absolute",
-    margin: 0,
-    width: "210px",
-    height: "98px",
-    left: "calc(55% + 61px)",
-    top: "45px"
+  position: "absolute",
+  margin: 0,
+  width: "210px",
+  height: "98px",
+  left: "calc(55% + 61px)",
+  top: "45px"
+});
+
+export const onMapProcess = style({
+  margin:0,
+  top:"23px",
+  position:"absolute",
+  right:"48px",
+  fontFamily: "Open Sans",
+  fontStyle: "normal",
+  fontWeight: "bold",
+  fontSize: "12px",
+  lineHeight: "16px",
+  color: "#6879BB",
+  cursor:"pointer"
+});
+
+export const forBorder = style({
+  position:"absolute",
+  top:"60px",
+  border: "0.5px solid #D6DCE9",
+  width: "calc(100% - 24px)"
 });

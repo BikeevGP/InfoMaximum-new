@@ -1,21 +1,34 @@
+// Компонент Menu, используется в документе Profile
+// Используется в проекте для навигации между страницами после авторизации
+
+////// Подключения из node_modules
+import { useQuery } from "@apollo/react-hooks";
+import { NavLink } from "react-router-dom";
 import React from "react";
+
+////// Подключение стилей
 import {
   menuTop,
   menuDown,
   menu,
-  itemMenu,
   itemIcon,
-  itemTagP
 } from "./Menu.styles";
+
+////// Подключение изображений
 import Proceset from "../../img/Proceset/Proceset";
 import UserIcon from "../../img/UserIcon/Usericon";
 import ExitIcon from "../../img/Exit/Exit";
 import Process from "../../img/Process/Process";
-import { useQuery } from "@apollo/react-hooks";
-import GetUsername from "../../quieres/LoadDataProfile";
-import { NavLink } from "react-router-dom";
 
-const Menu = () => {
+////// Подключение запроса
+import GetUsername from "../../quieres/LoadDataProfile";
+
+////// Подключение компонентов
+import MenuItem from "../MenuItem/MenuItem";
+
+interface IMenuProps {}
+
+const Menu: React.FC<IMenuProps> = () => {
   const { data } = useQuery(GetUsername);
   return (
     <>
@@ -23,30 +36,29 @@ const Menu = () => {
         <Proceset />
       </div>
       <div className={menuDown}>
-        <div className={itemMenu}>
-          <NavLink to="/profile">
-            <UserIcon className={itemIcon} />
-            <p className={itemTagP}>
-              {data?.currentUser.firstName} {data?.currentUser.secondName}
-            </p>
-          </NavLink>
-        </div>
-        <div className={itemMenu}>
-          <NavLink to="/process">
-            <Process className={itemIcon} />
-            <p className={itemTagP}>Список процессов</p>
-          </NavLink>
-        </div>
-        <div
-          className={itemMenu}
+        <NavLink to="/profile">
+          <MenuItem
+            icon={<UserIcon className={itemIcon} />}
+            text={data?.currentUser.firstName}
+            secondName={data?.currentUser.secondName}
+          />
+        </NavLink>
+        <NavLink to="/process">
+        <MenuItem
+          icon={<Process className={itemIcon} />}
+          text="Список процессов"
+        />
+        </NavLink>
+        <NavLink to="/profile">
+        <MenuItem
+          icon={<ExitIcon className={itemIcon} />}
+          text="Выход"
           onClick={() => {
             localStorage.removeItem("token");
             window.location.href = "/";
           }}
-        >
-          <ExitIcon className={itemIcon} />
-          <p className={itemTagP}>Выход</p>
-        </div>
+        />
+        </NavLink>
       </div>
       <div className={menu}></div>
     </>

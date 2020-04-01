@@ -1,11 +1,12 @@
 import { style } from "typestyle";
 
 export const appWrapper = style({
-  height: "100%",
+  height: "100vh",
   width: "100%",
   minWidth: "426px",
-  minHeight: "100vh",
-  background: "linear-gradient(213.53deg, #6879BB 7.06%, #9300BB 95.23%)"
+  minHeight: "666px",
+  background: "linear-gradient(213.53deg, #6879BB 7.06%, #9300BB 95.23%)",
+  overflow: "hidden"
 });
 
 export const logo = style({
@@ -16,9 +17,11 @@ export const logo = style({
 });
 
 export const formlayer = style({
+  position: "absolute",
+  bottom: "0px",
+  left:"calc(50% - 212px)",
   background: "white",
   width: "424px",
-  margin: "0 auto",
   minHeight: "85vh",
   borderRadius: "2px"
 });
@@ -64,6 +67,7 @@ export const button = style({
     }
   }
 });
+
 export const linkClass = style({
   color: "#3167BA",
   fontFamily: "Open Sans",
@@ -73,6 +77,7 @@ export const linkClass = style({
   lineHeight: "19px",
   textDecoration: "none"
 });
+
 export const registrationTagP = style({
   fontFamily: "Open Sans",
   fontStyle: "normal",
@@ -81,6 +86,7 @@ export const registrationTagP = style({
   lineHeight: "19px",
   textDecoration: "none"
 });
+
 export const registrationTagH2 = style({
   fontFamily: "Open Sans",
   fontStyle: "normal",

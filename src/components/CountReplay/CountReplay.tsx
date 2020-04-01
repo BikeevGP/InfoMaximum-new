@@ -1,8 +1,19 @@
+// Компонент CountReplay, используется в документе ProcessItem.tsx
+// Используется в проекте для визуализации данных с сервера о количестве выполненных действий
 import React from "react";
-import {countReplay, countReplayText, countReplaySubText} from './CountReplay.styles';
-import Circle from '../../img/Circle/Circle';
+
+//////Подключение стилей
+import {
+  countReplay,
+  countReplayText,
+  countReplaySubText
+} from "./CountReplay.styles";
+
+/////Подключение изображений
+import Circle from "../../img/Circle/Circle";
+
 interface ICountReplayProps {
-    countReplay: Number;
+  countReplay: Number;
 }
 
 const ICountReplay: React.FC<ICountReplayProps> = (props: any): any => {

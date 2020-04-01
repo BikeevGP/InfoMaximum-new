@@ -1,5 +1,6 @@
 import React from "react";
-import {countReplayIcon} from './Circle.stykes';
+import {countReplayIcon} from './Circle.styles';
+
 interface ICircleProps {
 }
 

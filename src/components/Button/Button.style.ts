@@ -38,6 +38,7 @@ export const profileButton = style({
     }
   }
 });
+
 export const button = style({
   position: "absolute",
   right: "22px",
@@ -76,6 +77,7 @@ export const button = style({
     }
   }
 });
+
 export const desabledButton = style({
   position: "absolute",
   right: "22px",

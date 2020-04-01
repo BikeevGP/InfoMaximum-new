@@ -4,6 +4,12 @@ export const maxLength = (value: string) => {
     : undefined;
 };
 
+export const checkNameChar = (value:string)=>{
+  return value && !/^[a-zA-Zа-яА-Я'][a-zA-Zа-яА-Я-' ]+[a-zA-Zа-яА-Я']?$/i.test(value)
+  ? "Недопустимые символы"
+  : undefined;
+}
+
 export const minLength = (value: string) => {
   return value && value.length < 4
     ? `Должен быть 4 символа или больше`

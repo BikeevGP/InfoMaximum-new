@@ -1,18 +1,32 @@
+// Контейней Profile, используется в документе Authorized.tsx
+// Используется в проекте для визуализации данных о пользователе
+
+////// Подключения из node_modules
 import React from "react";
+import { reduxForm, Field, isDirty, isValid } from "redux-form";
+import { useMutation, useQuery } from "@apollo/react-hooks";
+import { connect } from "react-redux";
+
+////// Подключение стилей
 import {
   middleLine,
   middleLineTagH2,
   userLayer,
   divInputs,
   divLabels,
-  userLayerLabels,
+  userLayerLabels
 } from "./Profile.style";
-import {profileButton, desabledButton} from '../../components/Button/Button.style';
+import {
+  profileButton,
+  desabledButton
+} from "../../components/Button/Button.style";
+
+////// Подключение компонентов
 import MyButton from "../../components/Button/Button";
-import { reduxForm, Field, isDirty, isValid } from "redux-form";
 import MyInput from "../../components/Input/MyInputs";
-import { connect } from "react-redux";
-import { useMutation, useQuery } from "@apollo/react-hooks";
+import PasswordInput from "../../components/InputPassword/InputPassword";
+
+////// Подключение валидаций
 import {
   maxLength,
   minLength8,
@@ -20,23 +34,29 @@ import {
   checkRePassword,
   minLength
 } from "../../store/Validation";
+
+////// Подключение запросов
 import loadDataProfile from "../../quieres/LoadDataProfile";
-import PasswordInput from "../../components/InputPassword/InputPassword";
 import EditUser from "../../quieres/EditUser";
 
-const Profile = props => {
-  console.log(props.dirty);
-  const { data } = useQuery(loadDataProfile, {
+interface IProfileProps {}
+
+const Profile: React.FC<IProfileProps> = (props: any) => {
+  const { data, refetch } = useQuery(loadDataProfile, {
     onCompleted() {
       props.initialize({
         name: data?.currentUser.firstName,
         secondName: data?.currentUser.secondName,
         email: data?.currentUser.email
       });
-    }
+    },
+    fetchPolicy: "network-only",
+    notifyOnNetworkStatusChange: true
   });
   const [startEditUser] = useMutation(EditUser, {
-    refetchQueries: [`loadData`]
+    onCompleted() {
+      refetch();
+    }
   });
   const { handleSubmit } = props;
   return (
@@ -49,7 +69,7 @@ const Profile = props => {
       </div>
       <div className={userLayer}>
         <form
-          onSubmit={handleSubmit(event => {
+          onSubmit={handleSubmit((event: any) => {
             props.dirty &&
               startEditUser({
                 variables: {
@@ -116,7 +136,7 @@ const Profile = props => {
           </div>
           <MyButton
             value="Сохранить"
-            className={!props.dirty ? desabledButton : profileButton}
+            className={!props.dirty || !props.valid ? desabledButton : profileButton}
           />
         </form>
       </div>
@@ -124,7 +144,7 @@ const Profile = props => {
   );
 };
 
-export default connect(() => {
+export default connect(state => {
   return { dirty: isDirty("Profile"), valid: isValid("Profile") };
 })(
   reduxForm({

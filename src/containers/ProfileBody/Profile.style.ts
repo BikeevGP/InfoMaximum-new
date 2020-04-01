@@ -31,6 +31,7 @@ export const userLayer = style({
   minWidth: "785px",
   zIndex: 1
 });
+
 export const userLayerLabels = style({
   fontFamily: "Open Sans",
   fontStyle: "normal",
@@ -60,6 +61,7 @@ export const userLayerInputs = style({
   color: "#6879bb",
   display: "block"
 });
+
 export const divLabels = style({
   display: "inline-block",
   marginRight: "100px"

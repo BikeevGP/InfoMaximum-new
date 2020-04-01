@@ -1,5 +1,11 @@
+// Компонент MetaDataItem, используется в документе ProcessItem.tsx
+// Используется в проекте для отображения метаданных о начале, завершении и загрузки процесса
+
 import React from "react";
-import {allLine, labelText, dateInLine} from './MetaDataItem.styles';
+
+////// Подключение стилей
+import { allLine, labelText, dateInLine } from "./MetaDataItem.styles";
+
 interface IMetaDataProps {
   labelText: string;
   dateInside: any;
