@@ -32,7 +32,8 @@ import {
   minLength8,
   emailTest,
   checkRePassword,
-  minLength
+  minLength,
+  required
 } from "../../store/Validation";
 
 ////// Подключение запросов
@@ -105,21 +106,21 @@ const Profile: React.FC<IProfileProps> = (props: any) => {
               name="name"
               type="text"
               component={MyInput}
-              validate={[minLength, maxLength]}
+              validate={[minLength, maxLength, required]}
             />
             <Field
               id="secondName"
               name="secondName"
               type="text"
               component={MyInput}
-              validate={[minLength, maxLength]}
+              validate={[minLength, maxLength, required]}
             />
             <Field
               id="email"
               name="email"
               type="text"
               component={MyInput}
-              validate={[emailTest]}
+              validate={[emailTest, required]}
             />
             <Field
               id="password"

@@ -20,11 +20,11 @@ const Arrow: React.FC<IArrowProps> = (props: any) => {
         height="12"
         transform="rotate(-180 12 12)"
         fill="white"
-        fill-opacity="0.01"
+        fillOpacity="0.01"
       />
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M4.53034 11.5303L3.46968 10.4696L7.93935 5.99994L3.46968 1.53027L4.53034 0.469614L10.0607 5.99994L4.53034 11.5303Z"
         fill="#6879BB"
       />

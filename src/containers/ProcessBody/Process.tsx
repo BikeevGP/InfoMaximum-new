@@ -31,6 +31,7 @@ const ProcessPage: React.FC<IProcessPageProps> = () => {
               loading={item.loading}
               averageExecutionTime={item.averageLeadTime}
               averageActiveTime={item.averageActiveTime}
+              key={item.id}
             />
           );
         })}

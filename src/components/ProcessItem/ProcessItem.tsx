@@ -51,7 +51,7 @@ interface IPropcessItemProps {
 
 const ProcessItem: React.FC<IPropcessItemProps> = (props: any): any => {
   return (
-    <div className={ItemLayer}>
+    <div className={ItemLayer} key={props.id}>
       <div className={topLine}>
         <h2 className={h2Tag}>{props.name}</h2>
         <p className={onMapProcess}>На карту процесса</p>

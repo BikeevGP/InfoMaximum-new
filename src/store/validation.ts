@@ -4,11 +4,12 @@ export const maxLength = (value: string) => {
     : undefined;
 };
 
-export const checkNameChar = (value:string)=>{
-  return value && !/^[a-zA-Zа-яА-Я'][a-zA-Zа-яА-Я-' ]+[a-zA-Zа-яА-Я']?$/i.test(value)
-  ? "Недопустимые символы"
-  : undefined;
-}
+export const checkNameChar = (value: string) => {
+  return value &&
+    !/^[a-zA-Zа-яА-Я'][a-zA-Zа-яА-Я-' ]+[a-zA-Zа-яА-Я']?$/i.test(value)
+    ? "Недопустимые символы"
+    : undefined;
+};
 
 export const minLength = (value: string) => {
   return value && value.length < 4
@@ -27,6 +28,9 @@ export const emailTest = (value: string) => {
     : undefined;
 };
 
-export const checkRePassword = (value:string, Fields:any) =>{
-    return value !== Fields.password ? 'Пароли не совпадают' : undefined;
-}
+export const checkRePassword = (value: string, Fields: any) => {
+  return value !== Fields.password ? "Пароли не совпадают" : undefined;
+};
+
+export const required = (value: string | Number) =>
+  value || typeof value === "number" ? undefined : "Поле обязательное для заполнения";
